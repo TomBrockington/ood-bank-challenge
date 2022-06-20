@@ -1,21 +1,20 @@
-//Not mine, mine is on paper
-
 # Bank Domain Model
 
 - Account
   - Properties
-    - transactions: Transaction[]
+    - transactions: Transaction[] // trans objects in array type?
     - balance: RealNumber
-  - Methodsclass
+  - Methods
     - constructor()
-    - deposit(amount :RealNumber)
-      - getDate
-    - withdrawal(amount: RealNumber)
-      - getDate
-    - #updateBalance(amount: RealNumber)
+    - deposit(amount :RealNumber, date: string)
+      - return balance
+    - withdrawal(amount: RealNumber, date: string)
+      - if not enough - error
+      - return balance
     - getBalance() : RealNumber
     - getTransactions() : Transaction[]
-    - #getTodaysDate() : String
+    - #getTodaysDate(date: string) : String
+      - return date
   
 - Transaction
   - Properties
@@ -25,52 +24,20 @@
     - balance: RealNumber
   - Methods
     - constructor( date, credit, debit, balance )
-      - this.date = date; this.credit = credit ...
+      - // set object properties to arguments 
     - getDate()
+      - return this.date
     - getBalance()
-    - getType()? 
+      - return this.balance
+    - getType(credit, debit)
 
 - Statement
   - Properties
-    - transactions: Transaction[]
+    - transactions: Transactions[] // from Account constructor? 
   - Methods
-    - constructor( transactions: Transaction[] )
-      - this.transactions = transactions
+    - constructor( transactions: Transactions[] )
+      - this.transactions = transactions []
     - printStatement()
+      - statement = String ${transactions} String
+      - return 'Bank statement 20/7/22 dep 10, ...'
 
-const account = new Account();
-
-account.deposit( 100.50 );
-account.withdraw( 50.0 );
-account.deposit( 1000 );
-account.withdraw( 500 );
-
-const statment = new Statment( account.getTransactions() )
-
-statement.printStatement()
-
-...
-
-const anotherStatmentPrinter = new Statement( account.getTransactions() )
-
-anotherStatmentPrinter.printStatement()
-
-// THE END :)
-
-Account.deposit( amount ) {
-    // Code is same as you currently have
-    // with one small change
-
-    if ( any errors ) {
-        return false;
-    }
-
-    const transaction = new Transaction( date, credit, 0, balance );
-    this.transactions.push( transaction );
-
-    return balance;
-}
-
-Statement.printStatment() {
-    // Your existing code
-}
