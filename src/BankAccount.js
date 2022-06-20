@@ -20,12 +20,15 @@ class Account {
     debitAccount(amount) {
         if (this.balance >= amount) {
             this.balance -= amount
+            const transaction = new Transaction('TODO: 22/22/22', 0, amount, this.balance)
+            this.transactions.push(transaction)
+            
             return this.balance
         } else {
             return 'Not enough funds available to make withdrawal'
         }
-        
     }
+
 
 }
 
