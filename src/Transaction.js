@@ -1,5 +1,7 @@
 const DEBIT = 'DEBIT'
 const CREDIT = 'CREDIT'
+const Statement = require ('./statement.js')
+const Account= require ('./account.js')
 
 class Transaction {
     constructor(date, credit, debit, balance) {
@@ -26,7 +28,7 @@ class Transaction {
     }
 
     getType() {
-        if (this.credit === 0) {
+        if (this.credit === null) {
             return DEBIT
         } else {
             return CREDIT
@@ -36,8 +38,5 @@ class Transaction {
     
 }
 
-module.exports = {
-    Transaction,
-    DEBIT,
-    CREDIT
-}
+module.exports = Transaction
+   
